@@ -1,3 +1,16 @@
+const contrastToggle = document.querySelector(".contrast-toggle");
+
+if (contrastToggle) {
+  const enabled = localStorage.getItem("rede-acolher-contrast") === "true";
+  document.body.classList.toggle("high-contrast", enabled);
+  contrastToggle.setAttribute("aria-pressed", String(enabled));
+  contrastToggle.addEventListener("click", () => {
+    const active = document.body.classList.toggle("high-contrast");
+    contrastToggle.setAttribute("aria-pressed", String(active));
+    localStorage.setItem("rede-acolher-contrast", String(active));
+  });
+}
+
 const form = document.querySelector("#volunteer-form");
 
 if (form) {
@@ -18,7 +31,7 @@ if (form) {
 
   telefone.addEventListener("input", () => {
     const value = digits(telefone.value).slice(0, 11);
-    telefone.value = value.replace(/^(\d{2})(\d)/, "($1) $2").replace(value.length === 10 ? /(\d{4})(\d{4})$/ : /(\d{5})(\d{1,4})$/, "$1-$2");
+    telefone.value = value.replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{5})(\d{1,4})$/, "$1-$2");
     telefone.setCustomValidity("");
     telefone.removeAttribute("aria-invalid");
     document.querySelector("#telefone-error").textContent = "";
@@ -59,7 +72,7 @@ if (form) {
       if (!valid) {
         field.setAttribute("aria-invalid", "true");
         error.textContent = message;
-        firstInvalid ||= field;
+        if (!firstInvalid) firstInvalid = field;
       } else {
         field.removeAttribute("aria-invalid");
         error.textContent = "";
