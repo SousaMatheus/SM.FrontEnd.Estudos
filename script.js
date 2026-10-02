@@ -1,13 +1,18 @@
 const contrastToggle = document.querySelector(".contrast-toggle");
 
 if (contrastToggle) {
-  const enabled = localStorage.getItem("rede-acolher-contrast") === "true";
+  let enabled = false;
+  try {
+    enabled = localStorage.getItem("rede-acolher-contrast") === "true";
+  } catch {}
   document.body.classList.toggle("high-contrast", enabled);
   contrastToggle.setAttribute("aria-pressed", String(enabled));
   contrastToggle.addEventListener("click", () => {
     const active = document.body.classList.toggle("high-contrast");
     contrastToggle.setAttribute("aria-pressed", String(active));
-    localStorage.setItem("rede-acolher-contrast", String(active));
+    try {
+      localStorage.setItem("rede-acolher-contrast", String(active));
+    } catch {}
   });
 }
 
@@ -83,7 +88,7 @@ if (form) {
       form.reportValidity();
       return;
     }
-    feedback.textContent = "Cadastro validado! Obrigado por querer fazer parte da Rede Acolher.";
+    feedback.textContent = "Validação concluída. Nenhum dado foi enviado ou armazenado.";
     form.reset();
   });
 }
