@@ -70,9 +70,9 @@ h1,h2{letter-spacing:-.045em;line-height:1.12}
 .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .project-card{overflow:hidden;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 5px 20px rgba(28,65,49,.04)}
 .project-visual{display:grid;place-items:center;height:180px;font-size:4.5rem}
-.visual-education{background:#f4e3c4;color:#946d32}
-.visual-care{background:#f2d8ce;color:#ae654e}
-.visual-green{background:#d9e9d6;color:#477b52}
+.visual-education{background:#f4e3c4;color:#765526}
+.visual-care{background:#f2d8ce;color:#7a3d2b}
+.visual-green{background:#d9e9d6;color:#355d3c}
 .project-body{padding:24px}
 .tag{display:inline-block;margin:0 0 11px;padding:4px 10px;border-radius:99px;background:var(--mint);color:var(--green);font-size:.74rem;font-weight:700}
 .project-body h2{margin:0 0 10px;font-size:1.45rem}
